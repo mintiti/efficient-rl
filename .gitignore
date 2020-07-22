@@ -19,3 +19,5 @@ git_rewrite_commit_history.sh
 rl-trained-agents
 
 work-to-do.txt
+
+runs/
