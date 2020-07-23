@@ -21,7 +21,7 @@ class TripletLoss(nn.Module):
         d_AP = self.distance(anchor, positive)
         d_AN = self.distance(anchor, negative)
 
-        loss = torch.clamp(d_AP - d_AN + self.margin, max=0) #torch.max(d_AP - d_AN + self.margin,zero)
+        loss = torch.clamp(d_AP - d_AN + self.margin, min=0) #torch.max(d_AP - d_AN + self.margin,zero)
 
         return loss
 
