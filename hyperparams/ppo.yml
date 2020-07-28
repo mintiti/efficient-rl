@@ -110,16 +110,28 @@ BipedalWalkerHardcore-v3:
   learning_rate: lin_2.5e-4
   clip_range: lin_0.2
 
+# Tuned
 LunarLander-v2:
   n_envs: 16
   n_timesteps: !!float 1e6
   policy: 'MlpPolicy'
-  n_steps: 1024
-  batch_size: 64
+  n_steps: 512
+  batch_size: 32
   gae_lambda: 0.98
-  gamma: 0.999
-  n_epochs: 4
-  ent_coef: 0.01
+  gamma: 0.995
+  n_epochs: 10
+  ent_coef: 0.0001392159430108716
+  learning_rate: 7.656376891724844e-05
+  clip_range: 0.2
+  max_grad_norm: 5
+  vf_coef: 0.11
+  policy_kwargs: "dict(log_std_init=-1.937427581367685,
+                       ortho_init=False,
+                       activation_fn=nn.ReLU,
+                       net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+                       )"
+  sde_sample_freq: 8
+
 
 LunarLanderContinuous-v2:
   n_envs: 16

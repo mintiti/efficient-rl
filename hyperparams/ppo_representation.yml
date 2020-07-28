@@ -28,18 +28,32 @@ Pendulum-v0:
   clip_range: 0.2
 
 # Tuned
+
 CartPole-v1:
-  n_envs: 8
+  n_envs: 1
   n_timesteps: !!float 1e5
   policy: 'MlpPolicy'
-  n_steps: 32
-  batch_size: 256
+  n_steps: 256
+  batch_size: 32
   gae_lambda: 0.8
-  gamma: 0.98
-  n_epochs: 20
-  ent_coef: 0.0
-  learning_rate: lin_0.001
-  clip_range: lin_0.2
+  gamma: 0.999
+  n_epochs: 1
+  ent_coef: 0.004006166169502567
+  learning_rate: 0.001240060108660763
+  clip_range: 0.4
+  max_grad_norm: 0.3
+  vf_coef: 0.6728286051284001
+  policy_kwargs: "dict(log_std_init=-2.024705316703617,
+                       ortho_init=False,
+                       activation_fn=nn.ReLU,
+                       net_arch=[dict(pi=[256, 256], vf=[256, 256])]
+                       )"
+  sde_sample_freq: 16
+  triplet_loss: "l2"
+  triplet_loss_margin: 4.493678632902212
+  representation_coef: 0.8011615827882806
+  rollout_history_size: 121.42305261798255
+
 
 MountainCar-v0:
   normalize: true
@@ -54,31 +68,32 @@ MountainCar-v0:
 
 # Tuned
 MountainCarContinuous-v0:
-  normalize: true
+  normalize: false
   n_envs: 1
   n_timesteps: !!float 20000
   policy: 'MlpPolicy'
-  batch_size: 8
-  n_steps: 128
-  gamma: 0.999
-  learning_rate: !!float 0.0001069695188067603
-  ent_coef: 1.5040789799300762e-05
-  clip_range: 0.1
+  batch_size: 512
+  n_steps: 256
+  gamma: 0.98
+  learning_rate: !!float 5.420325566449448e-05
+  ent_coef: 1.2852774556185805e-07
+  clip_range: 0.4
   n_epochs: 10
-  gae_lambda: 0.8
-  max_grad_norm: 0.6
-  vf_coef: 0.0031197969549257437
+  gae_lambda: 0.99
+  max_grad_norm: 0.8
+  vf_coef: 0.7836604024036105
   use_sde: False
-  policy_kwargs: "dict(log_std_init=-1.787326158058923,
+  policy_kwargs: "dict(log_std_init=-0.4866491748009002,
                        ortho_init=False,
-                       activation_fn=nn.ReLU,
+                       activation_fn=nn.Tanh,
                        net_arch=[dict(pi=[256, 256], vf=[256, 256])]
                        )"
-  sde_sample_freq: 16
+  sde_sample_freq: 64
   triplet_loss: "cosine"
-  triplet_loss_margin: 1.9853718043671515
-  representation_coef: 0.0931657876056202
-  rollout_history_size: 7962.329005577656
+  triplet_loss_margin: 0.8476226688887073
+  representation_coef: 0.07908941039750689
+  rollout_history_size: 2500
+
 
 Acrobot-v1:
   normalize: true
@@ -123,26 +138,26 @@ LunarLander-v2:
   n_envs: 16
   n_timesteps: !!float 1e6
   policy: 'MlpPolicy'
-  n_steps: 512
-  batch_size: 16
+  n_steps: 256
+  batch_size: 128
   gae_lambda: 0.99
-  gamma: 0.99
-  n_epochs: 10
-  ent_coef: 7.81229586445788e-06
-  learning_rate: 0.000308453
-  clip_range: 0.4
-  max_grad_norm: 0.6
-  vf_coef: 0.7816625238610715
-  policy_kwargs: "dict(log_std_init=0.953741,
+  gamma: 0.995
+  n_epochs: 20
+  ent_coef: 0.0013849952977046432
+  learning_rate: 0.00044475877676256384
+  clip_range: 0.2
+  max_grad_norm: 0.8
+  vf_coef: 0.4527544624808204
+  policy_kwargs: "dict(log_std_init=-1.4791834725323985,
                        ortho_init=False,
-                       activation_fn=nn.Tanh,
+                       activation_fn=nn.ReLU,
                        net_arch=[dict(pi=[256, 256], vf=[256, 256])]
                        )"
-  sde_sample_freq: 64
-  triplet_loss: "cosine"
-  triplet_loss_margin: 0.43366827034001276
-  representation_coef: 0.6097787889115562
-  rollout_history_size: 356164
+  sde_sample_freq: -1
+  triplet_loss: "l2"
+  triplet_loss_margin: 4.204444
+  representation_coef: 0.8349318039431558
+  rollout_history_size: 213662
 
 
 LunarLanderContinuous-v2:
