@@ -156,13 +156,13 @@ def sample_ppo_params(trial):
     gae_lambda = trial.suggest_categorical('gae_lambda', [0.8, 0.9, 0.92, 0.95, 0.98, 0.99, 1.0])
     max_grad_norm = trial.suggest_categorical('max_grad_norm', [0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 5])
     vf_coef = trial.suggest_uniform('vf_coef', 0, 1)
-    net_arch = trial.suggest_categorical('net_arch', ['small', 'medium','big'])
+    net_arch = trial.suggest_categorical('net_arch', ['big'])
     log_std_init = trial.suggest_uniform('log_std_init', -4, 1)
     sde_sample_freq = trial.suggest_categorical('sde_sample_freq', [-1, 8, 16, 32, 64, 128, 256])
     ortho_init = False
     # ortho_init = trial.suggest_categorical('ortho_init', [False, True])
     # activation_fn = trial.suggest_categorical('activation_fn', ['tanh', 'relu', 'elu', 'leaky_relu'])
-    activation_fn = trial.suggest_categorical('activation_fn', ['tanh', 'relu'])
+    activation_fn = trial.suggest_categorical('activation_fn', [ 'relu'])
 
     # TODO: account when using multiple envs
     if batch_size > n_steps:
@@ -226,12 +226,12 @@ def sample_ppo_representation_params(trial):
     ortho_init = False
     # ortho_init = trial.suggest_categorical('ortho_init', [False, True])
     # activation_fn = trial.suggest_categorical('activation_fn', ['tanh', 'relu', 'elu', 'leaky_relu'])
-    activation_fn = trial.suggest_categorical('activation_fn', ['tanh', 'relu'])
-
+    #activation_fn = trial.suggest_categorical('activation_fn', ['tanh', 'relu'])
+    activation_fn = trial.suggest_categorical('activation_fn', ['relu'])
     # Triplet related
     # triplet_distance = trial.suggest_categorical('triplet_distance', ["cosine", "l2"])
-    triplet_loss = "cosine"
-    triplet_loss_margin = trial.suggest_uniform('triplet_margin', 0.01, 2)
+    triplet_loss = "l2"
+    triplet_loss_margin = trial.suggest_uniform('triplet_loss_margin', 0.01, 8)
     representation_coef = trial.suggest_uniform('representation_coef', 0, 1)
     rollout_history_size = trial.suggest_loguniform('rollout_history_size', 100, 1e6)
 
