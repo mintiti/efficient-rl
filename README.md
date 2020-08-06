@@ -9,7 +9,7 @@ Contributions :
 
 |  RL Algo |  Implementation         | Tuning with Optuna         | Training with Zoo        |  Enjoy with Zoo |
 |----------|--------------------|--------------------|--------------------|-------|
-| Custom PPO      |:heavy_check_mark:| :heavy_check_mark:|:heavy_check_mark:| :x: |
+| Custom PPO      |:heavy_check_mark:| :heavy_check_mark:|:heavy_check_mark:| :heavy_check_mark: |
 
 Custom algorithm code is contained in /ppo_representation
 
